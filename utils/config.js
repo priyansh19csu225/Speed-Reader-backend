@@ -1,7 +1,7 @@
 module.exports = {
   SCHEMAS: {
     COMPREHENSIONS: "comprehensions",
-    
+    COMPREHENSIONS_RESULT: 'results'
   },
   STATUS_CODES: {
     NOT_FOUND: 404,
@@ -15,6 +15,10 @@ module.exports = {
       INSERT : '/api/insert',
       SEARCH_BY_ID: '/api/comprehension',
       COMPREHENSIONS_ALL: '/api/comprehensions'
+    },
+    COMPREHENSIONS_RESULT: {
+      SAVE : '/api/save',
+      SEARCH_BY_EMAIL: '/api/search'
     }
   },
 };

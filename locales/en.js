@@ -8,5 +8,7 @@ module.exports = {
   "create.true": "Comprehension Created successfully",
   "create.fail": "Comprehension not created",
   "find.fail" : "Comprehension not Found",
+  "findresult.fail": 'No past records found',
   "find.uncaught": "Oops.. please try again",
+  "result.true": "Result Added successfully",
 };

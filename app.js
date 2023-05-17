@@ -16,6 +16,7 @@ app.use(cors());
 // app.use(ROOT, require("./api/routes/cart"));
 // app.use(ROOT, require("./api/routes/payments"));
 app.use(ROOT,require("./api/routes/comprehension"));
+app.use(ROOT,require("./api/routes/comprehension_result"));
 app.use(require("./utils/middlewares/404"));
 
 const server = app.listen(process.env.PORT || 1234, (err) => {
