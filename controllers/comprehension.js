@@ -62,6 +62,28 @@ const comController = {
         .json({ msg: messageBundle["find.uncaught"] });
     }
   },
+  async returnDaily(request, response) {
+    const email = request.query.email;
+  
+    try {
+      const doc = await operations.returnDaily(email);
+      if (doc) {
+        response
+          .status(SUCCESS)
+          .json(
+            doc
+          );
+      } else {
+        response
+          .status(NOT_FOUND)
+          .json({ msg: messageBundle["find.fail"] });
+      }
+    } catch (err) {
+      response
+        .status(SERVER_ERROR)
+        .json({ msg: messageBundle["find.uncaught"] });
+    }
+  }
 };
 
 module.exports = comController;

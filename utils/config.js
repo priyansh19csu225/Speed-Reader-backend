@@ -14,7 +14,8 @@ module.exports = {
     COMPREHENSIONS: {
       INSERT : '/api/insert',
       SEARCH_BY_ID: '/api/comprehension',
-      COMPREHENSIONS_ALL: '/api/comprehensions'
+      COMPREHENSIONS_ALL: '/api/comprehensions',
+      DAILY_COMPREHENSION: '/api/dailyexercise',
     },
     COMPREHENSIONS_RESULT: {
       SAVE : '/api/save',

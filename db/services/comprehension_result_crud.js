@@ -10,7 +10,7 @@ module.exports = {
       
         const attempted_on = new Date();
           comprehensionResult.results.push({comprehension_id : object.comprehension_id , attempted_on , comprehension_name: object.comprehension_name , wpm : object.wpm , correct_answers: object.correct_answers , total_questions:object.total_questions, comprehension_level: object.comprehension_level});
-          comprehensionResult.exclude_comprehensions.push(object.comprehension_id);
+          if(!comprehensionResult.exclude_comprehensions.includes(object.comprehension_id)) comprehensionResult.exclude_comprehensions.push(object.comprehension_id);
           comprehensionResult.account_level = object.account_level + 1;
           
           comprehensionResult = await comprehensionResult.save();
