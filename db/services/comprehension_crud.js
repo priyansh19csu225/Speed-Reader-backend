@@ -1,6 +1,8 @@
 const ComModel = require("../models/comprehension");
 const model = require("../models/comprehension");
 const ComResultModel = require("../models/comprehension_result");
+const mongoose = require('mongoose');
+const ObjectId = mongoose.Types.ObjectId;
 
 module.exports = {
   create(comobject) {
@@ -29,16 +31,19 @@ module.exports = {
     const result = await ComResultModel.findOne({email});
     if(result){
       const exclude_comprehensions = result.exclude_comprehensions;
+      console.log(exclude_comprehensions);
+      const excludeIds = exclude_comprehensions.map(id => new ObjectId(id));
       const account_level = result.account_level;
       const doc = await ComModel.aggregate([
         // Exclude comprehensions with matching IDs or levels exceeding the account level
         {
           $match: {
-            _id: { $nin: exclude_comprehensions },
-          level: { $lte: account_level },
-          
+            $and: [
+              { _id: { $nin: excludeIds } },
+              { level: { $lte: account_level } }
+            ]
+          }
         },
-      },
       // Randomly sort the documents
       { $sample: { size: 1 } },
     ]).catch((error) => console.log(error));
